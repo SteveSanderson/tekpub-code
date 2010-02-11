@@ -9,11 +9,16 @@ using System.Net;
 
 namespace JobAds.Domain.Services
 {
+    /// <summary>
+    /// Warning: This is based on an undocumented Google API. I have no idea
+    /// whether Google is happy for you to use this API, or how long it will
+    /// continue to work. Use entirely at your own risk.
+    /// </summary>
     public class GoogleSearchSuggestor : ISearchSuggestor
     {
         public string GetSuggestion(string text)
         {
-            var req = BuildXmlPost(ApiUrl, BuildRequestXml(text));
+            var req = BuildXmlPost(BuildRequestXml(text));
             using (var response = req.GetResponse())
             {
                 var resultXml = GetXmlFromResponse(response);
@@ -23,7 +28,7 @@ namespace JobAds.Domain.Services
 
         public IAsyncResult BeginGetSuggestion(string text, AsyncCallback cb)
         {
-            var req = BuildXmlPost(ApiUrl, BuildRequestXml(text));
+            var req = BuildXmlPost(BuildRequestXml(text));
             return req.BeginGetResponse(cb, 
                 new AsyncState { Text = text, WebRequest = req }
             );
@@ -47,7 +52,7 @@ namespace JobAds.Domain.Services
 
         const string ApiUrl = "https://www.google.com/tbproxy/spell?lang=en&hl=en";
 
-        private string CreateSuggestionText(string text, XDocument spellingResult)
+        private static string CreateSuggestionText(string text, XDocument spellingResult)
         {
             string originalText = text;
             var corrections = from c in spellingResult.Descendants("c")
@@ -68,12 +73,12 @@ namespace JobAds.Domain.Services
             return text == originalText ? null : text;
         }
 
-        private XDocument GetXmlFromResponse(WebResponse response)
+        private static XDocument GetXmlFromResponse(WebResponse response)
         {
             return XDocument.Load(XmlReader.Create(response.GetResponseStream()));
         }
 
-        private XDocument BuildRequestXml(string text)
+        private static XDocument BuildRequestXml(string text)
         {
             return new XDocument(
                 new XElement("spellrequest",
@@ -86,7 +91,7 @@ namespace JobAds.Domain.Services
             );
         }
 
-        private WebRequest BuildXmlPost(string url, XDocument content)
+        private static WebRequest BuildXmlPost(XDocument content)
         {
             var bytes = Encoding.UTF8.GetBytes(content.ToString());
 
@@ -94,7 +99,7 @@ namespace JobAds.Domain.Services
             req.Method = "POST";
             using (var reqStream = req.GetRequestStream())
             {
-                reqStream.Write(bytes, 0, (int)bytes.Length);
+                reqStream.Write(bytes, 0, bytes.Length);
             }
             return req;
         }
