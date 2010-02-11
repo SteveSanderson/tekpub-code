@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Database Name="JobAdsDb" xmlns="http://schemas.microsoft.com/linqtosql/mapping/2007">
+  <Table Name="dbo.JobAds">
+    <Type Name="JobAds.Domain.Entities.JobAd">
+      <Column Name="JobAdId" Member="JobAdId" IsPrimaryKey="true" IsDbGenerated="true" />
+      <Column Name="Title" Member="Title"/>
+      <Column Name="Salary" Member="Salary"/>
+      <Column Name="Location" Member="Location"/>
+      <Column Name="OnlyMembersMaySeeDetails" Member="OnlyMembersMaySeeDetails"/>
+    </Type>
+  </Table>
+</Database>

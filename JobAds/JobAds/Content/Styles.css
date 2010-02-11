@@ -1,0 +1,35 @@
+﻿body, td
+{
+	font-family: Arial;
+}
+
+ul.jobAdList { list-style: none; padding: 0; }
+
+table.jobAdsTable { width: 700px; }
+
+table.jobAdsTable tr td
+{
+	border-bottom: 1px solid #aaaaff;
+	padding: .3em 0 .3em 0;
+}
+
+td.jobTitle { font-weight: bold; }
+td.jobSalary { text-align: right; }
+td.jobDownload a, td.jobDownload a:visited { font-size: 0.6em; background-color: Gray; color: White; text-decoration:none; padding: 0.4em; margin-left: 1em; }
+td.jobDownload a:hover { background-color: Navy; }
+
+div.resultsSummary { margin: 1em 0 1em 0; font-style: italic; }
+div.pageLinks { margin-top: 1em; }
+
+div.searchForm 
+{
+	padding: .5em 1.5em .5em 1.5em;
+	background-color: #506EB2;
+	color: White;
+}
+
+a.rssLink img, a.excelLink img { border: 0; vertical-align: middle; margin-right: .25em; }
+
+#tempDataMessage { background-color: Red; color: White; font-weight: bold; padding: 0.5em 1em 0.5em 1em; margin-bottom: 0.5em; -moz-border-radius: 0.8em; }
+
+span.suggestion { margin-left: 2em; }
