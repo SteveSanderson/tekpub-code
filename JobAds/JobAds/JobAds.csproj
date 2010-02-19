@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DateTimeEnglishParser, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c5a8a7c192b7fbd1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExternalAssemblies\DateTimeEnglishParser.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject.Core, Version=1.0.0.82, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ExternalAssemblies\Ninject.Core.dll</HintPath>
@@ -68,6 +72,7 @@
     <Compile Include="Controllers\AccountController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DataEntryController.cs" />
     <Compile Include="Controllers\JobsController.cs">
       <SubType>Code</SubType>
@@ -79,7 +84,10 @@
     <Compile Include="Models\SearchResultsViewModel.cs" />
     <Compile Include="NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\HttpHeadersValueProviderFactory.cs" />
     <Compile Include="Utils\iPhoneBrowserAttribute.cs" />
+    <Compile Include="Utils\JobAdsMetadataProvider.cs" />
+    <Compile Include="Utils\NaturalDatesModelBinder.cs" />
     <Compile Include="Utils\RssUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -95,11 +103,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\excel.jpg" />
+    <Content Include="Content\gradient.png" />
     <Content Include="Content\rss.jpg" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Views\Admin\BindingResults.aspx" />
+    <Content Include="Views\Admin\Create.aspx" />
     <Content Include="Views\DataEntry\Index.aspx" />
     <Content Include="Views\Jobs\Index.aspx" />
     <Content Include="Views\Jobs\Search.aspx" />
+    <Content Include="Views\Shared\EditorTemplates\RadioButtons.ascx" />
     <Content Include="Views\Shared\SearchForm.ascx" />
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using JobAds.Utils;
 
 namespace JobAds
 {
@@ -30,6 +31,10 @@ namespace JobAds
             RegisterRoutes(RouteTable.Routes);
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            ModelMetadataProviders.Current = new JobAdsMetadataProvider();
+
+            ValueProviderFactories.Factories.Add(new HttpHeadersValueProviderFactory());
+            ModelBinders.Binders.Add(typeof(DateTime), new NaturalDatesModelBinder());
         }
     }
 }

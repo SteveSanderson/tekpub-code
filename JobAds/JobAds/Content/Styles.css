@@ -33,3 +33,18 @@ a.rssLink img, a.excelLink img { border: 0; vertical-align: middle; margin-right
 #tempDataMessage { background-color: Red; color: White; font-weight: bold; padding: 0.5em 1em 0.5em 1em; margin-bottom: 0.5em; -moz-border-radius: 0.8em; }
 
 span.suggestion { margin-left: 2em; }
+
+/* -- Data entry styles -- */
+div.editor-label { float:left; min-width: 50%; text-align:right; padding-top:0.6em; }
+div.editor-label:after { content: ":" }
+div.editor-field { border: 1px solid white; text-align:left; padding-bottom:0.5em; padding-top: 0.3em; }
+input.text-box { background-image: url(gradient.png); border: 1px solid gray; padding-left: 0.2em; }
+input.check-box { margin-top: 0.5em; }
+input[type=submit] { padding: 0 2em 0 2em; }
+form { text-align: center; }
+.field { text-align:left; padding: 0.5em; border-left: 3px solid orange; margin-bottom: 3px; min-width: 18em; height:100%; }
+.field > label { font-weight: bold; display: block; padding-left: 0.2em; }
+.field .hint { color: Gray; font-size: 0.8em; font-style: italic; }
+.subfield > label { font-weight: normal; float:left; width: 7em; text-align:right; padding-bottom: 0.5em; margin-right: 0.5em; }
+.subfield { margin-top: 0.5em; }
+.fullwidth { width: 100%; }
