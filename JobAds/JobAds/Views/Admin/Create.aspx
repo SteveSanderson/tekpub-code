@@ -8,7 +8,8 @@
 
     <h2>Post a new Job Ad</h2>
 
-    <% using(Html.BeginForm()) { %>
+    <% Html.EnableClientValidation(); %>
+    <% using(Html.BeginForm()) { %>        
         <%= Html.HiddenFor(x => x.JobAdId) %>
         <table align="center">
             <tr>
@@ -16,6 +17,7 @@
                     <div class="field">
                         <label>Job title:</label>
                         <%= Html.TextBoxFor(x => x.Title, new { @class = "text-box fullwidth" }) %>
+                        <%= Html.ValidationMessageFor(x => x.Title) %>
                     </div>                
                 </td>
             </tr>
@@ -26,11 +28,13 @@
                         <div class="subfield">
                             <label>Base Salary ($):</label>
                             <%= Html.EditorFor(x => x.Salary) %>
+                            <%= Html.ValidationMessageFor(x => x.Salary) %>
                         </div>
                         <div class="subfield">
                             <label>Location:</label>
                             <%= Html.EditorFor(x => x.Location) %>
                             <div class="hint">Specify city and country</div>
+                            <%= Html.ValidationMessageFor(x => x.Location) %>
                         </div>            
                     </div>                
                 </td>
@@ -40,6 +44,7 @@
                         <div class="subfield">
                             <label>Publish from:</label>
                             <%= Html.EditorFor(x => x.PublishFromDate) %>
+                            <%= Html.ValidationMessageFor(x => x.PublishFromDate) %>
                         </div>
                         <div class="subfield">
                             <label>Visible to:</label>

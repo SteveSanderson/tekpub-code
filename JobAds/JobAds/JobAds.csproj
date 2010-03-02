@@ -87,6 +87,7 @@
     <Compile Include="Utils\HttpHeadersValueProviderFactory.cs" />
     <Compile Include="Utils\iPhoneBrowserAttribute.cs" />
     <Compile Include="Utils\JobAdsMetadataProvider.cs" />
+    <Compile Include="Utils\JobAdsValidationProvider.cs" />
     <Compile Include="Utils\NaturalDatesModelBinder.cs" />
     <Compile Include="Utils\RssUtils.cs" />
   </ItemGroup>
@@ -106,6 +107,9 @@
     <Content Include="Content\gradient.png" />
     <Content Include="Content\rss.jpg" />
     <Content Include="Content\Styles.css" />
+    <Content Include="Scripts\CustomValidationRules.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Views\Admin\BindingResults.aspx" />
     <Content Include="Views\Admin\Create.aspx" />
     <Content Include="Views\DataEntry\Index.aspx" />

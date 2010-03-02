@@ -22,8 +22,13 @@ namespace JobAds.Controllers
         [HttpPost]
         public ViewResult Create(JobAd jobAd, string referer)
         {
-            ViewData["referer"] = referer;
-            return View("BindingResults", jobAd);
+            if (ModelState.IsValid)
+            {
+                ViewData["referer"] = referer;
+                return View("BindingResults", jobAd);
+            }
+            else // Incoming data is invalid - redisplay the form
+                return View(jobAd);
         }
     }
 }

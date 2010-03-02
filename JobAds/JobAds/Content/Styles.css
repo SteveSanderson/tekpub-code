@@ -48,3 +48,10 @@ form { text-align: center; }
 .subfield > label { font-weight: normal; float:left; width: 7em; text-align:right; padding-bottom: 0.5em; margin-right: 0.5em; }
 .subfield { margin-top: 0.5em; }
 .fullwidth { width: 100%; }
+
+/* -- Validation styles -- */
+div.validation-summary-errors { text-align: left; color: Red; }
+.field-validation-error { display:block; clear: both; color:Red; font-weight: bold; padding: 0.15em 0 0.3em 0.5em;  }
+.field-validation-valid { display:none; }
+.field-validation-error:before { content: "* "; }
+input.text-box.input-validation-error { background-color: #FFBBAA; background-image: none; border: 1px solid red; }

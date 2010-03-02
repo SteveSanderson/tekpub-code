@@ -15,7 +15,7 @@ namespace JobAds.Utils
             // Ensure there's some incoming data
             string key = bindingContext.ModelName;
             var valueProviderResult = bindingContext.ValueProvider.GetValue(key);
-            if (valueProviderResult == null || string.IsNullOrEmpty(valueProviderResult.AttemptedValue))
+            if (valueProviderResult == null)
                 return null;
 
             // Preserve it in case we have to redisplay the form
@@ -25,12 +25,9 @@ namespace JobAds.Utils
             var rawText = ((string[])valueProviderResult.RawValue)[0];
             if (CanParseText(rawText))
                 return DateTimeEnglishParser.ParseRelative(DateTime.Now, rawText);
-            else
-            {
-                // There was a parsing error
+            else if (rawText != string.Empty) // There was a parsing error
                 bindingContext.ModelState.AddModelError(key, "A valid DateTime is required");
-                return null;
-            }
+            return null;
         }
 
         private bool CanParseText(string rawText)

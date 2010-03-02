@@ -35,6 +35,7 @@ namespace JobAds
 
             ValueProviderFactories.Factories.Add(new HttpHeadersValueProviderFactory());
             ModelBinders.Binders.Add(typeof(DateTime), new NaturalDatesModelBinder());
+            ModelValidatorProviders.Providers.Add(new JobAdsValidationProvider());
         }
     }
 }
