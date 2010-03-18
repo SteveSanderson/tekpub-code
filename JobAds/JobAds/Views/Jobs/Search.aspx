@@ -28,7 +28,7 @@
     <table class="jobAdsTable" cellspacing="0">
         <% foreach(var ad in Model.Results) { %>
             <tr>
-                <td class="jobTitle"><%= ad.Title %></td>
+                <td class="jobTitle"><%= Html.RouteLink(ad.Title, ad.DetailsRouteValues())%></td>
                 <td class="jobLocation"><%= ad.Location %></td>
                 <td class="jobSalary"><%= ad.Salary.ToString("$0,000") %></td>
                 <td class="jobDownload"><%= Html.ActionLink("Details (PDF)", "DownloadJobDetails", new { ad.JobAdId }) %></td>

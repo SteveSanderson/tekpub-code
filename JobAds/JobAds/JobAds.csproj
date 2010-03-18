@@ -89,6 +89,7 @@
     <Compile Include="Utils\JobAdsMetadataProvider.cs" />
     <Compile Include="Utils\JobAdsValidationProvider.cs" />
     <Compile Include="Utils\NaturalDatesModelBinder.cs" />
+    <Compile Include="Utils\RoutingUtils.cs" />
     <Compile Include="Utils\RssUtils.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,7 @@
     <Content Include="Views\Admin\BindingResults.aspx" />
     <Content Include="Views\Admin\Create.aspx" />
     <Content Include="Views\DataEntry\Index.aspx" />
+    <Content Include="Views\Jobs\Details.aspx" />
     <Content Include="Views\Jobs\Index.aspx" />
     <Content Include="Views\Jobs\Search.aspx" />
     <Content Include="Views\Shared\EditorTemplates\RadioButtons.ascx" />

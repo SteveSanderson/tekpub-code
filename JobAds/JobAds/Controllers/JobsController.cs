@@ -13,6 +13,8 @@ using JobAds.Utils;
 using JobAds.Domain.Entities;
 using JobAds.ActionResults;
 using JobAds.Domain.Services;
+using System.Web.Routing;
+using System.Net;
 
 namespace JobAds.Controllers
 {
@@ -107,6 +109,25 @@ namespace JobAds.Controllers
                 x => x.Location,
                 x => x.Salary.ToString("c")
             );
+        }
+
+        public ViewResult Details(int id)
+        {
+            var jobAd = jobAdRepository.JobAds.First(x => x.JobAdId == id);
+            EnforceCanonicalUrl(jobAd.DetailsRouteValues());
+            return View(jobAd);
+        }
+
+        private void EnforceCanonicalUrl(RouteValueDictionary routeValues)
+        {
+            string canonicalPathAndQuery = Url.RouteUrl(routeValues);
+
+            if (Request.Url.PathAndQuery != canonicalPathAndQuery)
+            {
+                Response.RedirectLocation = canonicalPathAndQuery;
+                Response.StatusCode = (int)HttpStatusCode.MovedPermanently;
+                Response.End();
+            }
         }
     }
 }

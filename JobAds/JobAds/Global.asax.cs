@@ -8,9 +8,6 @@ using JobAds.Utils;
 
 namespace JobAds
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
     public class MvcApplication : System.Web.HttpApplication
     {
         public static void RegisterRoutes(RouteCollection routes)
@@ -18,11 +15,19 @@ namespace JobAds
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                null,
+                "jobs/{country}/{city}/{title}/{id}",
+                new { controller = "Jobs", action = "Details" },
+                new { id = @"\d+" }
             );
 
+            routes.MapRoute(
+                "Default",                          // Route name
+                "{controller}/{action}/{id}",       // URL with parameters
+                new { controller = "Jobs",          // Parameter defaults
+                      action = "Index", 
+                      id = UrlParameter.Optional }  
+            );
         }
 
         protected void Application_Start()
@@ -32,7 +37,6 @@ namespace JobAds
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
             ModelMetadataProviders.Current = new JobAdsMetadataProvider();
-
             ValueProviderFactories.Factories.Add(new HttpHeadersValueProviderFactory());
             ModelBinders.Binders.Add(typeof(DateTime), new NaturalDatesModelBinder());
             ModelValidatorProviders.Providers.Add(new JobAdsValidationProvider());

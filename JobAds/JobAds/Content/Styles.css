@@ -13,6 +13,9 @@ table.jobAdsTable tr td
 	padding: .3em 0 .3em 0;
 }
 
+table.jobAdsTable a { color: #000044; text-decoration:none; }
+table.jobAdsTable a:hover { color: #0000FF; text-decoration:underline; }
+
 td.jobTitle { font-weight: bold; }
 td.jobSalary { text-align: right; }
 td.jobDownload a, td.jobDownload a:visited { font-size: 0.6em; background-color: Gray; color: White; text-decoration:none; padding: 0.4em; margin-left: 1em; }

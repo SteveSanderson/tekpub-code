@@ -21,5 +21,27 @@ namespace JobAds.Domain.Entities
         {
             get { return "c:\\examplePdfDocument.pdf"; } // Sufficient for now
         }
+
+        public string LocationCountry // Maybe it would be better to store Country and City separately
+        {
+            get
+            {
+                if (Location == null)
+                    return null;
+                var lastComma = Location.LastIndexOf(',');
+                return lastComma < 0 ? null : Location.Substring(lastComma + 1).Trim();
+            }
+        }
+
+        public string LocationCity
+        {
+            get
+            {
+                if (Location == null)
+                    return null;
+                var lastComma = Location.LastIndexOf(',');
+                return lastComma < 0 ? null : Location.Substring(0, lastComma).Trim();
+            }
+        }
     }
 }
