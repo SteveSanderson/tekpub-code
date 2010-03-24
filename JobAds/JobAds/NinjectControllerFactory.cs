@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Ninject.Core;
 using JobAds.Domain.Abstractions;
 using JobAds.Domain.Repositories;
 using JobAds.Domain.Services;
 using JobAds.Controllers;
-using Ninject.Core.Behavior;
+using Ninject;
+using Ninject.Modules;
 
 namespace JobAds
 {
@@ -24,11 +24,10 @@ namespace JobAds
                                           : null;
         }
 
-        private class JobAdsDependencies : StandardModule
+        private class JobAdsDependencies : NinjectModule
         {
             public override void Load()
             {
-                //Bind<JobsController>().To<JobsController>().Using<SingletonBehavior>();
                 Bind<IJobAdRepository>().To<DbJobAdRepository>();
                 Bind<ISearchSuggestor>().To<GoogleSearchSuggestor>();
             }
