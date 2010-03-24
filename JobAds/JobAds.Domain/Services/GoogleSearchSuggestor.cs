@@ -97,7 +97,14 @@ namespace JobAds.Domain.Services
 
             WebRequest req = WebRequest.Create(ApiUrl);
             req.Method = "POST";
-            using (var reqStream = req.GetRequestStream())
+
+            // We have to call BeginGetRequestStream (not GetRequestStream) otherwise the
+            // request will go into synchronous mode, where Begin/EndGetResponseStream will 
+            // actually work synchronously. However, since there's no effective way to get
+            // the request stream asynchronously (http://groups.google.com/group/microsoft.public.dotnet.framework/browse_thread/thread/5612cabc03b9b7b5),
+            // we might as well block the thread until the request is at least opened.
+            var dummyAsyncResult = req.BeginGetRequestStream(null, null);
+            using (var reqStream = req.EndGetRequestStream(dummyAsyncResult))
             {
                 reqStream.Write(bytes, 0, bytes.Length);
             }
